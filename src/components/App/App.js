@@ -41,53 +41,66 @@ function App() {
   return (
     // <AppContext.Provider value={{ loggedIn, userEmail, handleLogin, signOut }}>
     <div className="page__container">
-      <Header
-        loggedIn={loggedIn}
-        isNavOpened={isNavOpened}
-        onClickNav={handleNavClick}
-        handleLogin={handleLogin}
-      />
       <Switch>
         <Route exact path="/">
+          <Header
+            loggedIn={loggedIn}
+            isNavOpened={isNavOpened}
+            onClickNav={handleNavClick}
+            handleLogin={handleLogin}
+          />
           <Main />
+          <Footer />
         </Route>
-
         <Route path="/movies">
+          <Header
+            loggedIn={true}
+            isNavOpened={isNavOpened}
+            onClickNav={handleNavClick}
+            handleLogin={handleLogin}
+          />
           <Movies
             cards={initialCards}
           />
+          <Footer />
         </Route>
-
         <Route path="/saved-movies">
+          <Header
+            loggedIn={true}
+            isNavOpened={isNavOpened}
+            onClickNav={handleNavClick}
+            handleLogin={handleLogin}
+          />
           <SavedMovies
             cards={initialCards}
           />
+          <Footer />
         </Route>
-
         <Route path="/profile">
+          <Header
+            loggedIn={true}
+            isNavOpened={isNavOpened}
+            onClickNav={handleNavClick}
+            handleLogin={handleLogin}
+          />
           <Profile
             onClickSignout={handleSignout}
           />
         </Route>
-
         <Route path="/signup">
           <Register
             handleRegister={handleRegister}
           />
         </Route>
-
         <Route path="/signin">
           <Login
             handleLogin={handleLogin}
           />
         </Route>
-
         <Route path="*">
           <PageNotFound />
         </Route>
       </Switch>
-
-      <Footer />
     </div>
     // </AppContext.Provider>
   );
