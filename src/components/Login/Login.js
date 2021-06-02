@@ -1,24 +1,15 @@
-import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
-import './Login.css';
+import React from 'react';
+import useFormValidation from '../../utils/useFormValidation';
+import { Link } from 'react-router-dom';
 import logo from '../../images/header__logo.svg';
+import validateData from '../../utils/validateData';
 
 function Login({ handleLogin }) {
-  const [userData, setUserData] = useState({
-    email: '',
-    password: ''
-  })
-
-  function handleChange(evt) {
-    const { name, value } = evt.target;
-    setUserData({
-      ...userData,
-      [name]: value
-    })
-  }
+  const { userData, handleChange, validationErrors, isValidForm } = useFormValidation(validateData);
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(isValidForm);
     const { email, password } = userData;
     if (!email || !password) {
       return;
@@ -43,7 +34,11 @@ function Login({ handleLogin }) {
               value={userData.email}
               className="sign__input"
               onChange={handleChange}
+              autoComplete="off"
             />
+            {validationErrors.email &&
+              <div className="sign__validity">{validationErrors.email}</div>
+            }
           </label>
           <label className="sign__label">
             <span className="sign__field">Пароль</span>
@@ -54,6 +49,9 @@ function Login({ handleLogin }) {
               className="sign__input"
               onChange={handleChange}
             />
+            {validationErrors.password &&
+              <div className="sign__validity">{validationErrors.password}</div>
+            }
           </label>
         </fieldset>
         <button type="submit" className="sign__button">Войти</button>
