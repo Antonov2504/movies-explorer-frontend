@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 74px;
+  box-sizing: border-box;
+}
+
+.header_color_grey {
+  background-color: #dddee3;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 14px * 2);
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.header__logo {
+  display: block;
+  margin: 0;
+  width: 38px;
+}
+
+@media screen and (min-width: 600px) {
+  .header__container {
+    width: calc(100% - 30px * 2);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .header__container {
+    width: calc(100% - 70px * 2);
+  }
+}

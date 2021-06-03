@@ -1,0 +1,262 @@
+.nav {
+  /* margin: 0 19px 0 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.22;
+  color: inherit;
+  position: relative;
+}
+
+.nav_opened {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.nav__button {
+  border: 0;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+.nav__button:hover {
+  opacity: .8;
+}
+
+.nav__button_type_open-nav {
+  background-color: #000;
+  width: 28px;
+  height: 3px;
+  position: relative;
+  transition: transform .3s ease-in-out;
+  z-index: 2;
+}
+
+.nav__button_type_open-nav::before {
+  content: '';
+  width: 28px;
+  height: 3px;
+  background-color: #000;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  transition: .3s ease-in-out;
+  transition-property: top, transform;
+}
+
+.nav__button_type_open-nav::after {
+  content: '';
+  width: 28px;
+  height: 3px;
+  background-color: #000;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  transition: top .3s ease-in-out;
+}
+
+.nav__button_type_close-nav {
+  transform: rotateZ(45deg);
+  position: fixed;
+  top: 35px;
+  right: 4vw;
+}
+
+.nav__button_type_close-nav::before {
+  content: '';
+  transform: rotateZ(-90deg);
+  top: 0;
+  left: 0;
+}
+
+.nav__button_type_close-nav::after {
+  content: '';
+  top: 0;
+  left: 0;
+}
+
+.nav__button_type_signin {
+  padding: 5px 12px;
+  color: #fff;
+  background-color: #3456F3;
+  border-radius: 3px;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  /* font-weight: 500; */
+  font-size: 10px;
+  line-height: 1.6;
+  color: inherit;
+  list-style: none;
+}
+
+.nav__list_authorized {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 15.5vh 11.7vw 8.8vh;
+  background-color: #fafafa;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  position: fixed;
+  top: 0;
+  right: -110vw;
+  z-index: 1;
+  box-sizing: border-box;
+  transition: right .3s ease-in-out;
+}
+
+.nav__cover {
+  background-color: #000;
+  opacity: .3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+.nav__list_opened {
+  right: 0;
+}
+
+.nav__item {
+  margin: 0 0 0 14px;
+}
+
+.nav__item_authorized {
+  margin: 0 0 28px 0;
+}
+
+.nav__item_type_account {
+  padding: 10px 36px 10px 11px;
+  margin: 0;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: .92;
+  transform: translate(-50%, 0);
+  position: absolute;
+  bottom: 8.8vh;
+  left: 50%;
+}
+
+.nav__item_type_account_active {
+  font-weight: 500;
+}
+
+.nav__item_type_account::after {
+  content: '';
+  width: 26px;
+  height: 26px;
+  background-image: url('../../images/icons/account-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 11px 11px;
+  background-color: #f4f4f4;
+  border-radius: 50%;
+  background-position: center;
+  position: absolute;
+  top: 2px;
+  right: 4px;
+}
+
+.nav__link {
+  padding: 0 0 5px;
+  margin: 0 0 28px;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+
+.nav__link:hover {
+  opacity: .7;
+}
+
+.nav__link_active {
+  border-bottom: 2px solid #000;
+}
+
+@media screen and (min-width: 600px) {
+  .nav__list {
+    font-size: 12px;
+    line-height: 1.33;
+  }
+
+  .nav__list_authorized {
+    width: 67.7vw;
+    right: -68vw;
+  }
+
+  .nav__list_opened {
+    right: 0;
+  }
+
+  .nav__button_type_signin {
+    padding: 8px 20px;
+  }
+
+  .nav__item:not(.nav__item_authorized):not(.nav__item_type_account) {
+    margin: 0 0 0 30px;
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  .nav_type_mobile {
+    display: none;
+  }
+
+  .nav__list_authorized {
+    display: flex;
+    flex-direction: row;
+    width: initial;
+    height: initial;
+    padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    position: initial;
+  }
+
+  .nav__item_type_main {
+    display: none;
+  }
+
+  .nav__item_type_account {
+    margin: 0 0 0 50px;
+    position: relative;
+    bottom: initial;
+    left: initial;
+    transform: translate(0, 0);
+  }
+  
+  .nav__button_type_open-nav {
+    display: none;
+  }
+
+  .nav__item_authorized {
+    margin: 0 0 0 20px;
+  }
+
+  .nav__link_active {
+    border-bottom: 0;
+    font-weight: 500;
+  }
+}

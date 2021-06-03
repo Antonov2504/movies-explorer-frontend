@@ -1,0 +1,76 @@
+.card {
+  width: 100%;
+  background: white;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.card__button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background-position: center;
+  background-size: 13px 13px;
+  background-repeat: no-repeat;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  transition-property: background-color, background-image;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  transition: opacity .3s;
+}
+
+.card__button:hover {
+  opacity: .8;
+}
+
+.card__button_type_save {
+  background-image: url('../../images/icons/favourites-icon.svg');
+}
+
+.card__button_type_save-active {
+  background-color: #3456f3;
+  background-image: url('../../images/icons/favourites-icon-active.svg');
+}
+
+.card__button_type_delete {
+  background-size: 8px 8px;
+  background-image: url('../../images/icons/delete-icon.svg');
+}
+
+.card__info {
+  padding: 14px;
+}
+
+.card__name {
+  max-width: 280px;
+  margin: 0 0 9px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  list-style: none;
+}
+
+.card__duration {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.18;
+  color: #a0a0a0;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  min-height: 168px;
+  object-fit: cover;
+  object-position: center;
+}

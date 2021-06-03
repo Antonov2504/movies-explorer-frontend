@@ -1,0 +1,269 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.page {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  background-color: #fafafa;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+}
+
+.page__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 282px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.page__title {
+  width: 100%;
+  padding: 0 0 28px 0;
+  margin: 0;
+  border-bottom: 1px solid #000;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+  box-sizing: border-box;
+}
+
+.socials {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.socials_type_footer {
+  flex-direction: column;
+  margin: 0 0 30px;
+}
+
+.socials__item {
+  margin: 0 20px 0 0;
+  color: inherit;
+}
+
+.socials__item_type_footer {
+  margin: 0 0 12px 0;
+}
+
+.socials__item:last-of-type {
+  margin: 0;
+}
+
+.socials__link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+
+.socials__link:hover {
+  opacity: .7;
+}
+
+.socials__link_type_footer {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.sign {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: calc(100% - 30px * 2);
+  max-width: 396px;
+  padding: 7vh 0;
+  margin: 0 auto;
+}
+
+.sign__logo {
+  align-self: center;
+  margin: 0 0 50px;
+}
+
+.sign__heading {
+  align-self: center;
+  margin: 0 0 10.3vh;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.21;
+}
+
+.sign__fieldset {
+  min-height: 335px;
+  margin: 0 0 7.7vh;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.sign__label {
+  display: block;
+  margin: 0 0 20px;
+  position: relative;
+}
+
+.sign__field {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #a0a0a0;
+}
+
+.sign__input {
+  width: 100%;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border: 0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.23;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.sign__input:focus {
+  outline: 1px solid #3456f3;
+}
+
+.sign__input_type_error {
+  color: #ee3465;
+}
+
+.sign__validity {
+  width: 100%;
+  margin: 5px 0;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #ee3465;
+  position: relative;
+}
+
+.sign__button {
+  display: block;
+  width: 100%;
+  padding: 13px 0;
+  background-color: #3456f3;
+  border: 0;
+  border-radius: 3px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+.sign__button:disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+  cursor: default;
+}
+
+.sign__button:hover {
+  opacity: .8;
+}
+
+.sign__signup {
+  margin: 14px 0 0;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.sign__redirect {
+  display: inline-block;
+  margin: 0 7px 0 0;
+  color: #a0a0a0;
+}
+
+.sign__link {
+  text-decoration: none;
+  color: #3456F3;
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+.sign__link:hover {
+  opacity: .7;
+}
+
+@media screen and (min-width: 600px) {
+  .page__title {
+    padding: 0 0 23px 0;
+    font-size: 22px;
+    line-height: 1.23;
+  }
+
+  .socials_type_footer {
+    flex-direction: row;
+    margin: 0;
+  }
+
+  .socials__item_type_footer {
+    margin: 0 20px 0 0;
+  }
+
+  .socials__link_type_footer {
+    font-size: 13px;
+    line-height: 1.23;
+  }
+
+  .sign {
+    width: calc(100% - 70px * 2);
+  }
+
+  .sign__logo {
+    align-self: flex-start;
+    margin: 0 0 40px;
+  }
+
+  .sign__heading {
+    margin: 0 0 40px;
+    align-self: flex-start;
+  }
+
+  .sign__fieldset {
+    margin: 0;
+  }
+
+  .sign__button {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+
+  .sign__signup {
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 1.21;
+  }
+
+  .sign__redirect {
+    margin: 0 6px 0 0;
+  }
+}

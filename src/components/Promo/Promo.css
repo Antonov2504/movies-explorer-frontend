@@ -1,0 +1,129 @@
+.promo {
+  width: 100%;
+  padding: 70px 0 30px;
+  background-color: #dddee3;
+  box-sizing: border-box;
+}
+
+.promo__container {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 14px * 2);
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.promo__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.promo__heading {
+  margin: 0 0 24px 0;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.37;
+  text-align: center;
+}
+
+.promo__subheading {
+  max-width: 260px;
+  margin: 0 0 80px 0;
+  font-size: 13px;
+  line-height: 1.23;
+  text-align: center;
+  opacity: .5;
+}
+
+.promo__button {
+  padding: 10px 20px;
+  color: inherit;
+  background-color: transparent;
+  border: 1px solid rgba(0 0 0 / 60%);
+  border-radius: 3px;
+  color: #000;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-decoration: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+.promo__button:hover {
+  opacity: .8;
+}
+
+.promo__image {
+  max-width: 210px;
+  margin: 0 0 44px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (min-width: 600px) {
+  .promo {
+    padding: 140px 0 75px;
+  }
+
+  .promo__container {
+    width: calc(100% - 50px * 2);
+  }
+
+  .promo__heading {
+    margin: 0 0 22px 0;
+    font-size: 40px;
+    line-height: 1.25;
+  }
+
+  .promo__subheading {
+    margin: 0 0 92px 0;
+  }
+
+  .promo__image {
+    max-width: initial;
+    margin: 0 0 48px;
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  .promo {
+    padding: 75px 0;
+  }
+
+  .promo__container {
+    flex-direction: row;
+    align-items: flex-start;
+    width: calc(100% - 70px * 2);
+  }
+
+  .promo__info {
+    align-items: flex-start;
+  }
+
+  .promo__heading {
+    max-width: 630px;
+    margin: 0 0 36px 0;
+    font-size: 50px;
+    line-height: 1.16;
+    text-align: left;
+  }
+
+  .promo__subheading {
+    max-width: 310px;
+    margin: 0 0 146px 0;
+    text-align: left;
+  }
+  
+  .promo__image {
+    margin: 0;
+  }
+
+}
