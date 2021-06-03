@@ -6,7 +6,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 // import { emptyMoviesContainerText } from '../../utils/constants';
 
-function Movies({ cards }) {
+function Movies({ cards, onCardSave }) {
   const location = useLocation();
   return (
     <section className="elements">
@@ -17,7 +17,9 @@ function Movies({ cards }) {
           <MoviesCard
             key={card._id}
             card={card}
-            location={location.pathname} />
+            location={location.pathname} 
+            onCardSave={onCardSave}
+            />
         ))}
       </ul>
       {/* <button type="button" className="elements__button">Ещё</button> */}

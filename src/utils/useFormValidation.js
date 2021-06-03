@@ -1,39 +1,56 @@
 import { useState, useEffect } from 'react';
 
-function useFormValidation(validateData) {
-  const [userData, setUserData] = useState({
-    name: '',
-    email: '',
-    password: ''
+function useFormValidation(inputs, validateData) {
+  const [userData, setUserData] = useState({                                                                                // Стейт со значениями инпутов для валидации
+    ...inputs
   });
-  const [validationInput, setValidationInput] = useState({
+  const [validationInput, setValidationInput] = useState({                                                                  // Стейт валидируемый инпут
     name: '',
     value: ''
   });
-  const [isValidated, setIsValidated] = useState(false);
-  const [isValidForm, setIsValidForm] = useState(false);
-  const [validationErrors, setValidationErrors] = useState({});
+  const [enableValidation, setEnableValidation] = useState({ ...inputs });                                                  // Стейт состояния валидации инпутов выполнялась/не выполнялась
+  const [isValidForm, setIsValidForm] = useState(false);                                                                    // Стейт состояния форма валидна
+  const [validationErrors, setValidationErrors] = useState({});                                                             // Стейт ошибок валидации
 
   useEffect(() => {
-    console.log(validationInput);
-    if (isValidated) {
+    const enableFormValidation = Object.keys(enableValidation).every(key => {
+      return enableValidation[key];
+    });
+
+    if (enableValidation[validationInput.name]) {
       setValidationErrors({
         ...validationErrors,
         ...validateData(validationInput)
       })
     }
+
+    if (enableFormValidation) {
+      setEnableValidation({
+        ...enableValidation,
+        form: true
+      });
+    }
   }, [validationInput]);
 
   useEffect(() => {
-    console.log(validationErrors);
     const emptyValidationErrors = Object.keys(validationErrors).every(key => {
-      console.log(validationErrors, key, validationErrors[key], !validationErrors[key]);
       return !validationErrors[key];
     });
-    emptyValidationErrors ? setIsValidForm(true) : setIsValidForm(false);
-    console.log(Object.keys(validationErrors));
-    console.log(emptyValidationErrors);
+    enableValidation.form && emptyValidationErrors ? setIsValidForm(true) : setIsValidForm(false);
   }, [validationErrors]);
+
+  // useEffect(() => {
+  //   Object.keys(enableValidation).forEach(key => {
+  //     setEnableValidation({
+  //       ...enableValidation,
+  //       [key]: false
+  //     });
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    setIsValidForm(false);
+  }, []);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -41,7 +58,10 @@ function useFormValidation(validateData) {
       ...userData,
       [name]: value
     });
-    setIsValidated(true);
+    setEnableValidation({
+      ...enableValidation,
+      [name]: true
+    });
     setValidationInput({
       ...validationInput,
       name,

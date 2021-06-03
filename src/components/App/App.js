@@ -21,7 +21,7 @@ function App() {
   function handleLogin() {
     console.log('handle login');
     setLoggedIn(true);
-    history.push('/signin');
+    history.push('/movies');
   }
 
   function handleRegister() {
@@ -36,6 +36,12 @@ function App() {
   function handleSignout() {
     console.log('handle signout');
     setLoggedIn(false);
+    history.push('/signin');
+  }
+
+  function handleCardSave(card) {
+    console.log('handle card save');
+    console.log(card);
   }
 
   return (
@@ -61,6 +67,7 @@ function App() {
           />
           <Movies
             cards={initialCards}
+            onCardSave={handleCardSave}
           />
           <Footer />
         </Route>
@@ -73,6 +80,7 @@ function App() {
           />
           <SavedMovies
             cards={initialCards}
+            onCardSave={handleCardSave}
           />
           <Footer />
         </Route>

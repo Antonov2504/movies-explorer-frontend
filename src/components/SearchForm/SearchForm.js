@@ -28,6 +28,7 @@ function SearchForm() {
           onChange={handleChange}
           placeholder="Фильм"
           autoComplete="off"
+          required
         />
         <button type="submit" className="searchForm__button"></button>
         <label className="searchForm__label">

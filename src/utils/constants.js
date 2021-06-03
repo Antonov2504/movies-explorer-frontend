@@ -12,6 +12,7 @@ export const initialCards = [
     description: 'Описание',
     image: initialImage,
     nameRU: '32 слова о дизайне',
+    saved: [7, 3, 1]
   },
   {
     _id: '2',
@@ -22,5 +23,6 @@ export const initialCards = [
     description: 'Описание',
     image: initialImage,
     nameRU: '33 слова о дизайне',
+    saved: [2, 5, 1]
   }
 ];

@@ -1,7 +1,7 @@
 const validationRequirements = {
   name: {
     empty: true,
-    regExp: /[\wа-я\sё]{2,30}/i,
+    regExp: /^[a-zA-Zа-яА-Я\sё]+$/i,
     minLength: 2,
     maxLength: 30,
   },
@@ -28,13 +28,13 @@ const validationErrorsText = {
   },
   password: {
     empty: 'Пожалуйста, укажите пароль',
-    regExp: 'Пароль может состоять из букв кириллицы и латиницы, цифр, а также специальных символов : % . , _ + ~ # = @',
+    regExp: 'Пароль может состоять из латинских букв, цифр и специальных символов : % . , _ + ~ # = @',
   }
 }
 
 function validateData(input) {
   let errors = {};
-  console.log('validateData');
+  console.log(input.name);
 
   // Проверка поля на пустоту
   if (validationRequirements[input.name].empty && !input.value.trim()) {
@@ -46,6 +46,7 @@ function validateData(input) {
 
   // Проверка поля на регулярное выражение
   if (validationRequirements[input.name].regExp && !validationRequirements[input.name].regExp.test(input.value)) {
+    console.log('regExp');
     errors[input.name] = validationErrorsText[input.name].regExp;
     return errors;
   } else {
@@ -54,6 +55,7 @@ function validateData(input) {
 
   // Проверка поля на минимальную длину
   if (validationRequirements[input.name].minLength && input.value.length < validationRequirements[input.name].minLength) {
+    console.log('minLength');
     errors[input.name] = validationErrorsText[input.name].minLength;
     return errors;
   } else {
@@ -67,31 +69,6 @@ function validateData(input) {
   } else {
     errors[input.name] = '';
   }
-
-  // // Валидация имени
-  // if (!values.name.trim()) {
-  //   errors.name = validationErrorsText.name.empty;
-  // } else if (!validationRequirements.name.regExp.test(values.name)) {
-  //   errors.name = validationErrorsText.name.regExp;
-  // } else if (values.name.length < validationRequirements.name.minLength) {
-  //   errors.name = validationErrorsText.name.minLength;
-  // } else if (values.name.length > validationRequirements.name.maxLength) {
-  //   errors.name = validationErrorsText.name.maxLength;
-  // }
-
-  // // Валидация Email
-  // if (!values.email.trim()) {
-  //   errors.email = validationErrorsText.email.empty;
-  // } else if (!validationRequirements.email.regExp.test(values.email)) {
-  //   errors.email = validationErrorsText.email.regExp;
-  // }
-
-  // // Валидация пароля
-  // if (!values.password) {
-  //   errors.password = validationErrorsText.password.empty;
-  // } else if (!validationRequirements.password.regExp.test(values.password)) {
-  //   errors.password = validationErrorsText.password.regExp;
-  // }
 
   return errors;
 }

@@ -4,7 +4,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 // import Preloader from '../Preloader/Preloader';
 
-function Movies({ cards }) {
+function Movies({ cards, onCardSave }) {
   // const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -12,6 +12,7 @@ function Movies({ cards }) {
       <SearchForm />
       <MoviesCardList
         cards={cards}
+        onCardSave={onCardSave}
       />
     </main>
   );

@@ -5,16 +5,15 @@ import logo from '../../images/header__logo.svg';
 import validateData from '../../utils/validateData';
 
 function Login({ handleLogin }) {
-  const { userData, handleChange, validationErrors, isValidForm } = useFormValidation(validateData);
+  const { userData, handleChange, validationErrors, isValidForm } = useFormValidation({ email: '', password: '' }, validateData);
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(isValidForm);
     const { email, password } = userData;
     if (!email || !password) {
       return;
     }
-    handleLogin(evt, password, email);
+    if (isValidForm) handleLogin(evt, password, email);
   }
 
   return (
@@ -32,12 +31,12 @@ function Login({ handleLogin }) {
               type="text"
               name="email"
               value={userData.email}
-              className="sign__input"
+              className={`sign__input ${validationErrors.email && 'sign__input_type_error'}`}
               onChange={handleChange}
               autoComplete="off"
             />
             {validationErrors.email &&
-              <div className="sign__validity">{validationErrors.email}</div>
+              <p className="sign__validity">{validationErrors.email}</p>
             }
           </label>
           <label className="sign__label">
@@ -46,20 +45,19 @@ function Login({ handleLogin }) {
               type="password"
               name="password"
               value={userData.password}
-              className="sign__input"
+              className={`sign__input ${validationErrors.password && 'sign__input_type_error'}`}
               onChange={handleChange}
             />
             {validationErrors.password &&
-              <div className="sign__validity">{validationErrors.password}</div>
+              <p className="sign__validity">{validationErrors.password}</p>
             }
           </label>
         </fieldset>
-        <button type="submit" className="sign__button">Войти</button>
+        <button type="submit" className="sign__button" disabled={!isValidForm}>Войти</button>
       </form>
       <div className="sign__signup">
         <span className="sign__redirect">Еще не зарегистрированы?</span>
         <Link to="/signup" className="sign__link">Регистрация</Link>
-        {/* <Link to="./sign-up" className="sign__link">Регистрация</Link> */}
       </div>
     </section>
   );
