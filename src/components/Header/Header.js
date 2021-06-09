@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../../contexts/AppContext';
 import logo from '../../images/header__logo.svg';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 
-function Header({ loggedIn, isNavOpened, onClickNav, handleLogin }) {
+function Header() {
+  const value = useContext(AppContext);
   return (
-    <header className={`header ${!loggedIn && 'header_color_grey'}`}>
+    <header className={`header ${!value.loggedIn && 'header_color_grey'}`}>
       <div className="header__container">
         <Link to="/"><img src={logo} alt="ФильмоПоиск" className="header__logo" /></Link>
-        <Navigation
-          loggedIn={loggedIn}
-          isNavOpened={isNavOpened}
-          onClickNav={onClickNav}
-          onClickSignin={handleLogin}
-        />
+        <Navigation />
       </div>
     </header >
   );

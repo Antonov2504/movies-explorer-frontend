@@ -19,11 +19,10 @@
   background-color: #f4f4f4;
   cursor: pointer;
   transition: .3s ease-in-out;
-  transition-property: background-color, background-image;
+  transition-property: opacity, background-color, background-image;
   position: absolute;
   top: 20px;
   right: 15px;
-  transition: opacity .3s;
 }
 
 .card__button:hover {
@@ -70,6 +69,7 @@
 .card__image {
   display: block;
   width: 100%;
+  height: 100%;
   min-height: 168px;
   object-fit: cover;
   object-position: center;

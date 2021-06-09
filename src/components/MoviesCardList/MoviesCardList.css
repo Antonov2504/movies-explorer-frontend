@@ -25,9 +25,9 @@
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
   grid-auto-rows: 236px;
-  grid-gap: 16px 16px;
+  grid-gap: 5vw;
   padding: 0;
   margin: 0 0 30px;
   list-style: none;
@@ -43,16 +43,22 @@
   }
 
   .cards {
-    grid-template-columns: repeat(auto-fill, minmax(339px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(40vw, 1fr));
     grid-auto-rows: 258px;
-    grid-gap: 36px 30px;
+    grid-gap: 2vw;
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
   .cards {
-    grid-template-columns: repeat(auto-fill, minmax(364px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25vw, 1fr));
     grid-auto-rows: 271px;
     grid-gap: 30px 24px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(364px, 1fr));
   }
 }

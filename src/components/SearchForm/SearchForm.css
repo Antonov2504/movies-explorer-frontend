@@ -55,6 +55,18 @@
   outline: 1px solid #3456f3;
 }
 
+.searchForm__validity {
+  width: 100%;
+  margin: 5px 0;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #ee3465;
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+}
+
 .searchForm__button {
   padding: 17px 40px;
   background-image: url('../../images/icons/search-icon-white.svg');
