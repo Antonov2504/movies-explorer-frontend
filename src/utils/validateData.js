@@ -1,7 +1,7 @@
 const validationRequirements = {
   name: {
     empty: true,
-    regExp: /^[a-zA-Zа-яА-Я\sё]+$/i,
+    regExp: /^[a-zA-Zа-яА-Я\sё\-]+$/i,
     minLength: 2,
     maxLength: 30,
   },
@@ -12,6 +12,9 @@ const validationRequirements = {
   password: {
     empty: true,
     regExp: /^[a-zA-Z0-9:%.,_+~#=@]+$/,
+  },
+  movie: {
+    empty: true
   }
 }
 
@@ -29,12 +32,14 @@ const validationErrorsText = {
   password: {
     empty: 'Пожалуйста, укажите пароль',
     regExp: 'Пароль может состоять из латинских букв, цифр и специальных символов : % . , _ + ~ # = @',
+  },
+  movie: {
+    empty: 'Нужно ввести ключевое слово'
   }
 }
 
 function validateData(input) {
   let errors = {};
-  console.log(input.name);
 
   // Проверка поля на пустоту
   if (validationRequirements[input.name].empty && !input.value.trim()) {
@@ -46,7 +51,6 @@ function validateData(input) {
 
   // Проверка поля на регулярное выражение
   if (validationRequirements[input.name].regExp && !validationRequirements[input.name].regExp.test(input.value)) {
-    console.log('regExp');
     errors[input.name] = validationErrorsText[input.name].regExp;
     return errors;
   } else {
@@ -55,7 +59,6 @@ function validateData(input) {
 
   // Проверка поля на минимальную длину
   if (validationRequirements[input.name].minLength && input.value.length < validationRequirements[input.name].minLength) {
-    console.log('minLength');
     errors[input.name] = validationErrorsText[input.name].minLength;
     return errors;
   } else {

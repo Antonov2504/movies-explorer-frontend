@@ -162,6 +162,17 @@ html {
   position: relative;
 }
 
+.sign__error {
+  width: 100%;
+  margin: 20px 0;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1.2;
+  color: #ee3465;
+  text-align: center;
+  position: relative;
+}
+
 .sign__button {
   display: block;
   width: 100%;
@@ -211,6 +222,20 @@ html {
 
 .sign__link:hover {
   opacity: .7;
+}
+
+.sign__preloader {
+  display: block;
+  width: 100%;
+  padding: 21px 0;
+  background-color: #3456f3;
+  background-image: url('../../images/preloader.svg');
+  background-position: center;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  cursor: default;
+  opacity: .8;
 }
 
 @media screen and (min-width: 600px) {

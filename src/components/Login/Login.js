@@ -4,16 +4,15 @@ import { Link } from 'react-router-dom';
 import logo from '../../images/header__logo.svg';
 import validateData from '../../utils/validateData';
 
-function Login({ handleLogin }) {
-  const { userData, handleChange, validationErrors, isValidForm } = useFormValidation({ email: '', password: '' }, validateData);
-
+function Login({ isLoading, isErrorResponse, handleLogin }) {
+  const { inputValues, handleChange, validationErrors, isValidForm } = useFormValidation({ email: '', password: '' }, validateData);
   function handleSubmit(evt) {
     evt.preventDefault();
-    const { email, password } = userData;
+    const { email, password } = inputValues;
     if (!email || !password) {
       return;
     }
-    if (isValidForm) handleLogin(evt, password, email);
+    if (isValidForm) handleLogin(email, password);
   }
 
   return (
@@ -30,7 +29,7 @@ function Login({ handleLogin }) {
             <input
               type="text"
               name="email"
-              value={userData.email}
+              value={inputValues.email}
               className={`sign__input ${validationErrors.email && 'sign__input_type_error'}`}
               onChange={handleChange}
               autoComplete="off"
@@ -44,7 +43,7 @@ function Login({ handleLogin }) {
             <input
               type="password"
               name="password"
-              value={userData.password}
+              value={inputValues.password}
               className={`sign__input ${validationErrors.password && 'sign__input_type_error'}`}
               onChange={handleChange}
             />
@@ -53,7 +52,9 @@ function Login({ handleLogin }) {
             }
           </label>
         </fieldset>
-        <button type="submit" className="sign__button" disabled={!isValidForm}>Войти</button>
+        {isErrorResponse.status && <p className="sign__error">{isErrorResponse.message}</p>}
+        {isLoading && <div className="sign__preloader" />}
+        {!isLoading && <button type="submit" className="sign__button" disabled={!isValidForm}>Войти</button>}
       </form>
       <div className="sign__signup">
         <span className="sign__redirect">Еще не зарегистрированы?</span>

@@ -162,7 +162,7 @@
   font-weight: 500;
 }
 
-.nav__item_type_account::after {
+.nav__link_type_account::after {
   content: '';
   width: 26px;
   height: 26px;

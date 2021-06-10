@@ -1,28 +1,9 @@
-import initialImage from '../images/movies/movie-1.jpg';
+export const emptyMoviesContainerText = 'Здесь будут представлены Ваши фильмы';
+export const serverRejectMessage = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
 
-export const emptyMoviesContainerText = 'Найденные фильмы';
+export const noDataMessage = 'Ничего не найдено';
 
-export const initialCards = [
-  {
-    _id: '1',
-    country: 'Россия',
-    director: 'Федор Бондарчук',
-    duration: 1.784,
-    year: 1980,
-    description: 'Описание',
-    image: initialImage,
-    nameRU: '32 слова о дизайне',
-    saved: [7, 3, 1]
-  },
-  {
-    _id: '2',
-    country: 'Россия',
-    director: 'Федор Бондарчук',
-    duration: 1.2,
-    year: 1980,
-    description: 'Описание',
-    image: initialImage,
-    nameRU: '33 слова о дизайне',
-    saved: [2, 5, 1]
-  }
-];
+export const mainAppUrl = 'https://antonov.movies-explorer.nomoredomains.club';
+export const mainApiBaseUrl = 'https://antonov.api.movies.nomoredomains.club';
+export const moviesBaseUrl = 'https://api.nomoreparties.co';
+export const moviesApiBaseUrl = 'https://api.nomoreparties.co/beatfilm-movies';

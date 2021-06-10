@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './SearchForm.css';
+import useFormValidation from '../../utils/useFormValidation';
+import validateData from '../../utils/validateData';
 
-function SearchForm() {
-  const [movie, setMovie] = useState('');
+function SearchForm({ onChangeInputMovie, onSearchSubmit }) {
+  const { inputValues, handleChange, runFormValidation, validationErrors, isValidForm } = useFormValidation({ movie: '' }, validateData);
 
-  function handleChange(evt) {
-    setMovie(evt.target.value);
-    // console.log(movie);
+  function handleInputChange(evt) {
+    handleChange(evt);
+    if (onChangeInputMovie) onChangeInputMovie(evt.target.value);
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    runFormValidation();
+    if (isValidForm) onSearchSubmit(inputValues.movie, evt.target['movie-type'].checked);
   }
 
   return (
@@ -23,14 +27,16 @@ function SearchForm() {
         <input
           type="text"
           name="movie"
-          value={movie}
-          className="searchForm__input"
-          onChange={handleChange}
+          value={inputValues.movie}
+          className={`searchForm__input ${validationErrors.movie && 'searchForm__input_type_error'}`}
+          onChange={handleInputChange}
           placeholder="Фильм"
           autoComplete="off"
-          required
         />
-        <button type="submit" className="searchForm__button"></button>
+        {validationErrors.movie &&
+          <p className="searchForm__validity">{validationErrors.movie}</p>
+        }
+        <button type="submit" className="searchForm__button" disabled={validationErrors.movie}></button>
         <label className="searchForm__label">
           <input
             type="checkbox"

@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 import logo from '../../images/header__logo.svg';
 import validateData from '../../utils/validateData';
 
-function Register({ handleRegister }) {
-  const { userData, handleChange, validationErrors, isValidForm } = useFormValidation({ name: '', email: '', password: '' }, validateData);
+function Register({ handleRegister, isLoading, isErrorResponse }) {
+  const { inputValues, handleChange, validationErrors, isValidForm } = useFormValidation({ name: '', email: '', password: '' }, validateData);
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    const { name, email, password } = userData;
+    const { name, email, password } = inputValues;
     if (!name || !email || !password) {
       return;
     }
-    if (isValidForm) handleRegister(evt, name, email, password);
+    if (isValidForm) handleRegister(name, email, password);
   }
 
   return (
@@ -33,7 +33,7 @@ function Register({ handleRegister }) {
             <input
               type="text"
               name="name"
-              value={userData.name}
+              value={inputValues.name}
               className={`sign__input ${validationErrors.name && 'sign__input_type_error'}`}
               onChange={handleChange}
               autoComplete="off"
@@ -47,7 +47,7 @@ function Register({ handleRegister }) {
             <input
               type="text"
               name="email"
-              value={userData.email}
+              value={inputValues.email}
               className={`sign__input ${validationErrors.email && 'sign__input_type_error'}`}
               onChange={handleChange}
               autoComplete="off"
@@ -61,14 +61,16 @@ function Register({ handleRegister }) {
             <input
               type="password"
               name="password"
-              value={userData.password}
+              value={inputValues.password}
               className={`sign__input ${validationErrors.password && 'sign__input_type_error'}`}
               onChange={handleChange}
               autoComplete="off"
             />
           </label>
         </fieldset>
-        <button type="submit" className="sign__button" disabled={!isValidForm}>Зарегистрироваться</button>
+        {isErrorResponse.status && <p className="sign__error">{isErrorResponse.message}</p>}
+        {isLoading && <div className="sign__preloader" />}
+        {!isLoading && <button type="submit" className="sign__button" disabled={!isValidForm}>Зарегистрироваться</button>}
       </form>
       <div className="sign__signup">
         <span className="sign__redirect">Уже зарегистрированы?</span>
