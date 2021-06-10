@@ -14,7 +14,6 @@ function useFormValidation(inputs, validateData) {
 
   // При изменении валидируемого инпута выполняется валидация его значения
   useEffect(() => {
-    console.log('validationInput changed');
     const enableFormValidation = Object.keys(enableValidation).every(key => {                                               // Валидация формы завершена, все поля формы провалидированы
       return enableValidation[key];
     });
