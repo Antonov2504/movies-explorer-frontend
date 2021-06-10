@@ -30,7 +30,6 @@ function MainApi(options) {
     })
       .then(handleOriginalResponse)
       .then(data => {
-        console.log('authorize');
         if (data.token) {
           localStorage.setItem('token', data.token);
           setToken(data.token);
@@ -41,7 +40,6 @@ function MainApi(options) {
   }
 
   const getUserInfo = () => {
-    console.log('getUserInfo');
     const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/users/me`, {
       headers: setMainApiBaseResponsHeaders(token),

@@ -14,15 +14,10 @@ function MoviesCardList({ cards, isNoSearchResult, isNoCards, isLoadingCards, is
   let lastIndexCard = useRef(0);
 
   function handleShowMoreButtonClick() {
-    console.log('handle more card click');
-    console.log(cardsOptions.count + lastIndexCard.current > cards.length);
-
     lastIndexCard.current += cardsOptions.countAddMore;
     setRenderedCards(cards.filter((card, index) => {
-      console.log(index < (cardsOptions.count + lastIndexCard.current));
       return index < (cardsOptions.count + lastIndexCard.current);
     }));
-    console.log(cardsOptions.count, lastIndexCard.current, cards.length);
     if (cards.length - cardsOptions.count - lastIndexCard.current < 1) {
       setIsShowMoreButton(false);
       lastIndexCard.current = 0;
@@ -31,8 +26,6 @@ function MoviesCardList({ cards, isNoSearchResult, isNoCards, isLoadingCards, is
   }
 
   useEffect(() => {
-    console.log(cards);
-    console.log(cards.length > cardsOptions.count);
     setRenderedCards(cards);
     setIsShowMoreButton(false);
     if (cards.length > cardsOptions.count) {

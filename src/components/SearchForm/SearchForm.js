@@ -13,7 +13,6 @@ function SearchForm({ onChangeInputMovie, onSearchSubmit }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log('handleSubmit search');
     runFormValidation();
     if (isValidForm) onSearchSubmit(inputValues.movie, evt.target['movie-type'].checked);
   }
